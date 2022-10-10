@@ -50,7 +50,14 @@
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title>
+        <span style="font-size: 1.2em; font-weight: 600;">
+          Helper
+        </span>
+        <span style="font-size: 1.2em; font-weight: 400;">
+          API
+        </span>
+      </v-toolbar-title>
       <v-spacer />
 <!--      <v-btn-->
 <!--        icon-->
@@ -58,12 +65,12 @@
 <!--      >-->
 <!--        <v-icon>mdi-menu</v-icon>-->
 <!--      </v-btn>-->
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      <v-switch
+        class="pt-4"
+        :prepend-icon="$vuetify.theme.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+        v-model="$vuetify.theme.dark"
+        inset
+      ></v-switch>
     </v-app-bar>
     <v-main>
       <v-container>

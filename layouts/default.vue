@@ -66,7 +66,7 @@
 <!--        <v-icon>mdi-menu</v-icon>-->
 <!--      </v-btn>-->
       <v-switch
-        class="pt-4"
+        class="pt-6"
         :prepend-icon="$vuetify.theme.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'"
         v-model="$vuetify.theme.dark"
         inset

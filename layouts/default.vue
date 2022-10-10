@@ -72,8 +72,8 @@
         inset
       ></v-switch>
     </v-app-bar>
-    <v-main>
-      <v-container>
+    <v-main class="">
+      <v-container class="">
         <Nuxt />
       </v-container>
     </v-main>

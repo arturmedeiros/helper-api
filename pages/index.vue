@@ -7,7 +7,7 @@
             Welcome to the Vuetify + Nuxt.js template
           </v-card-title>
           <v-card-text>
-            <p>{{ info_api }}</p>
+            <p>SSR: {{ info_api }}</p>
 
             <p></p>
             <div class="text-xs-right">

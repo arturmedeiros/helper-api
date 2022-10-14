@@ -15,5 +15,11 @@ export default {
       global: "ok"
     }
   },
-  methods:{},
+  methods:{
+    normalizeHelper(payload) {
+      return JSON.parse(JSON.stringify(payload))
+    },
+    refresh() {
+      window.location.reload()
+    },},
 }

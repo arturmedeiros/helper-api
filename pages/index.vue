@@ -52,6 +52,18 @@ export default {
     this.info_api = await fetch(
       'https://helpers.arjos.com.br/'
     ).then(res => res.json())
+  },
+  head() {
+    return {
+      title: "Helper API",
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Helper API with several FREE options: Geolocation by IP, Email Validator, Email List Validator, PIX QR-Code Generator, Horoscope and much more.'
+        }
+      ]
+    }
   }
 }
 </script>

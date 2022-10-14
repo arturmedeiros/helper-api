@@ -7,7 +7,7 @@
             Welcome to the Vuetify + Nuxt.js template
           </v-card-title>
           <v-card-text>
-            <p>{{ configs.data }}</p>
+            <p>{{ info_api }}</p>
 
             <p></p>
             <div class="text-xs-right">
@@ -39,8 +39,19 @@ export default {
     AvatarWithTextInline,
     CardHomeDefault
   },
+  data() {
+    return {
+      info_api: []
+    }
+  },
   mounted() {
     // console.log("this.isMobile", this.isMobile)
+    console.log("API: ", this.info_api)
+  },
+  async fetch() {
+    this.info_api = await fetch(
+      'https://helpers.arjos.com.br/'
+    ).then(res => res.json())
   }
 }
 </script>

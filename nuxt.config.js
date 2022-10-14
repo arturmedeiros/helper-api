@@ -9,7 +9,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Helper API' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -60,13 +60,4 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.resolve.fallback.fs = false
-  //     config.resolve.fallback.dns = false
-  //     config.resolve.fallback.net = false
-  //   }
-  //
-  //   return config;
-  // }
 }

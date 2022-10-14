@@ -1,10 +1,15 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       fixed
       temporary
     >
+      <v-list>
+        <v-list-item>
+          <TitleNavbar/>
+        </v-list-item>
+      </v-list>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -23,48 +28,13 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      :clipped-left="clipped"
       fixed
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"
                           v-if="true" />
-      <v-btn
-        v-if="false"
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        v-if="false"
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        v-if="false"
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title>
-        <span style="font-size: 1.2em; font-weight: 600;">
-          Helper
-        </span>
-        <span style="font-size: 1.2em; font-weight: 400;">
-          API
-        </span>
-      </v-toolbar-title>
+      <TitleNavbar/>
       <v-spacer />
-<!--      <v-btn-->
-<!--        icon-->
-<!--        @click.stop="rightDrawer = !rightDrawer"-->
-<!--      >-->
-<!--        <v-icon>mdi-menu</v-icon>-->
-<!--      </v-btn>-->
       <v-switch
         class="pt-6"
         :prepend-icon="$vuetify.theme.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'"
@@ -78,7 +48,7 @@
       </v-container>
     </v-main>
     <v-footer
-      :absolute="!fixed"
+      :absolute="true"
       app
     >
       <span>&copy; {{ new Date().getFullYear() }}</span>
@@ -90,13 +60,13 @@
 export default {
   name: 'DefaultLayout',
   mounted() {
-    console.log('Break', this.$vuetify.breakpoint.name)
+    // console.log('Break', this.$vuetify.breakpoint.name)
+    this.$store.dispatch('configs/getApiInformation')
+    console.log('this.global', this.global)
   },
-  data () {
+  data() {
     return {
-      clipped: false,
       drawer: false,
-      fixed: false,
       items: [
         {
           icon: 'mdi-apps',
@@ -109,11 +79,8 @@ export default {
           to: '/inspire'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: 'Helper API'
     }
-  }
+  },
 }
 </script>

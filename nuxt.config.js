@@ -1,5 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -30,6 +28,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,14 +45,28 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
+
+  axios: {
+    baseUrl: "https://helpers.arjos.com.br"
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    optionsPath: 'vuetify.options.js',
+    optionsPath: 'vuetify.options.js'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
+  // webpack: (config, { isServer }) => {
+  //   if (!isServer) {
+  //     config.resolve.fallback.fs = false
+  //     config.resolve.fallback.dns = false
+  //     config.resolve.fallback.net = false
+  //   }
+  //
+  //   return config;
+  // }
 }

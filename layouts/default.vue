@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
       fixed
@@ -12,7 +12,7 @@
       </v-list>
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(item, i) in apis"
           :key="i"
           :to="item.to"
           router
@@ -59,14 +59,16 @@
 <script>
 export default {
   name: 'DefaultLayout',
+  components: {
+  },
   mounted() {
     // console.log('Break', this.$vuetify.breakpoint.name)
-    this.$store.dispatch('configs/getApiInformation')
-    console.log('this.global', this.global)
+    // this.$store.dispatch('configs/getApiInformation')
   },
   data() {
     return {
       drawer: false,
+      loading: true,
       items: [
         {
           icon: 'mdi-apps',
@@ -82,5 +84,7 @@ export default {
       title: 'Helper API'
     }
   },
+  methods: {
+  }
 }
 </script>

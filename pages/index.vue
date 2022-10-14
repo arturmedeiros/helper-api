@@ -4,10 +4,10 @@
       <v-col cols="12" sm="12" md="12" shadow="none">
         <v-card outlined style="border-radius: 10px;" class="pa-4">
           <v-card-title class="">
-            Welcome to the Vuetify + Nuxt.js template
+            <div class="mr-4">🎉</div> Welcome to the Helper API!
           </v-card-title>
           <v-card-text>
-            <p>SSR: {{ info_api }}</p>
+            <p>SSR: {{ this.$store.state.configs.data }}</p>
 
             <p></p>
             <div class="text-xs-right">
@@ -22,7 +22,12 @@
              :key="`${item}${index}`"
              :cols="isMobile
                     ? 12 : 6"
-             xs="12" sm="12" md="6" shadow="none">
+             xs="12"
+             sm="12"
+             md="6"
+             shadow="none"
+             class="cursor-pointer"
+      >
         <CardHomeDefault title="IP Geolocation" subtitle="Gratuita"/>
       </v-col>
     </v-row>
@@ -45,14 +50,19 @@ export default {
     }
   },
   mounted() {
-    // console.log("this.isMobile", this.isMobile)
-    console.log("API: ", this.info_api)
+    console.log("API SSR: ", this.normalizeHelper(this.$store.state.configs.data))
   },
+  /* SSR Data Fetch */
   async fetch() {
     this.info_api = await fetch(
       'https://helpers.arjos.com.br/'
-    ).then(res => res.json())
+    )
+      .then(res => res.json())
+      .then((response) => {
+        this.$store.commit('configs/SET_API_INFORMATION', response)
+      })
   },
+  /* SSR Meta SEO */
   head() {
     return {
       title: "Helper API",

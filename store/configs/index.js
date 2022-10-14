@@ -1,10 +1,33 @@
 export const state = () => ({
-  data: []
+  data: [],
+  loading: false,
+  menu_sidebar: {
+    items: [
+      {
+        icon: 'mdi-apps',
+        title: 'Welcome',
+        to: '/'
+      },
+      {
+        icon: 'mdi-chart-bubble',
+        title: 'Inspire',
+        to: '/inspire'
+      }
+    ],
+  }
 })
 
 export const mutations = {
   SET_API_INFORMATION(state, payload) {
     state.data = payload;
+    // console.log(state.data, payload);
+  },
+  SET_LOADING(state, payload) {
+    state.data = payload;
+    // console.log(state.data, payload);
+  },
+  SET_MENU(state, payload) {
+    // state.menu_sidebar.drawer = payload;
     // console.log(state.data, payload);
   },
 }

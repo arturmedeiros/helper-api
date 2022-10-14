@@ -6,13 +6,38 @@ export default {
     ...mapGetters([]),
     isMobile(){
       return (this.$vuetify.breakpoint.name === 'xs' || this.$vuetify.breakpoint.name === 'sm')
-    }
+    },
   },
   data(){
     return {
       logo: {
       },
-      global: "ok"
+      apis: [
+        {
+          icon: 'mdi-apps',
+          avatar: '',
+          title: 'IP Geolocation',
+          to: '/ip'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          avatar: '',
+          title: 'Email Validator',
+          to: '/email'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          avatar: '',
+          title: 'PIX Generator',
+          to: '/pix'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          avatar: '',
+          title: 'Horoscope',
+          to: '/horoscope'
+        },
+      ]
     }
   },
   methods:{
@@ -21,5 +46,6 @@ export default {
     },
     refresh() {
       window.location.reload()
-    },},
+    },
+  },
 }

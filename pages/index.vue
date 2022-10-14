@@ -49,20 +49,6 @@ export default {
       info_api: []
     }
   },
-  mounted() {
-    console.log("API SSR: ", this.normalizeHelper(this.$store.state.configs.data))
-  },
-  /* SSR Data Fetch */
-  async fetch() {
-    this.info_api = await fetch(
-      'https://helpers.arjos.com.br/'
-    )
-      .then(res => res.json())
-      .then((response) => {
-        this.$store.commit('configs/SET_API_INFORMATION', response)
-      })
-  },
-  /* SSR Meta SEO */
   head() {
     return {
       title: "Helper API",

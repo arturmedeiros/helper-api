@@ -1,5 +1,6 @@
 export const state = () => ({
   data: [],
+  baseUrl: 'https://helpers.arjos.com.br/',
   loading: false,
   menu_sidebar: {
     items: [

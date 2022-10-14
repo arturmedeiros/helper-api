@@ -35,7 +35,16 @@
                           v-if="true" />
       <TitleNavbar/>
       <v-spacer />
+      <v-btn
+        @click.stop="$vuetify.theme.dark = !$vuetify.theme.dark"
+        v-if="isMobile"
+        color="light"
+        icon
+      >
+        <v-icon>{{ $vuetify.theme.dark ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
+      </v-btn>
       <v-switch
+        v-else
         class="pt-6"
         :prepend-icon="$vuetify.theme.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'"
         v-model="$vuetify.theme.dark"

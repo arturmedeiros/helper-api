@@ -3,7 +3,7 @@
                 ($store.state.email.data && $route.fullPath === '/email')"
           dark>
     <div id="code" v-highlightjs>
-      <code style="padding: 20px 30px 0px 30px;
+      <code style="padding: 20px 30px 10px 30px;
                    max-height: 450px;
                    max-width: 100%;
                    overflow-y: auto;

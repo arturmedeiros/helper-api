@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('ip/getIpInformation')
+    // this.$store.dispatch('ip/getIpInformation')
   },
   onBeforeUnmount() {
     let map = document.getElementById("map-wrap")

@@ -46,7 +46,8 @@ export default {
   },
   watch: {
     'data': function () {
-      console.log("Mudou data: ", this.data)
+      /*console.log("Change data: ", this.data)*/
+      this.$store.commit('SET_EMAIL', [])
     }
   },
   components:{},

@@ -58,9 +58,25 @@
     </v-main>
     <v-footer
       :absolute="true"
+      height="55px"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <div>
+        <small>
+          Helper API &copy; {{ new Date().getFullYear() }}
+        </small>
+      </div>
+      <v-spacer/>
+      <div>
+        <small>
+          Made with ❤ by
+          <a style="text-decoration: none;"
+             href="https://arjos.com.br/"
+             target="_blank">
+          ARJOS
+        </a>
+        </small>
+      </div>
     </v-footer>
   </v-app>
 </template>

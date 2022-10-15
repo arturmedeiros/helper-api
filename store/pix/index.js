@@ -45,7 +45,7 @@ const actions = {
         response.data.amount = null
       }
       context.commit('SET_PIX', response.data)
-      console.log('SET_PIX', response.data)
+      // console.log('SET_PIX', response.data)
     }).catch(error => {
       // console.log(error.response.status);
       console.log(error.response);

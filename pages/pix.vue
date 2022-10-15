@@ -268,8 +268,9 @@ export default {
         this.new_pix.city
       ) {
         new_pix = {
-          key_type: this.pix_key ? this.pix_key.replace('-', '').toLowerCase() : null,
-          key: this.pix_key ?? null,
+          // key_type: this.pix_key ? this.pix_key.replace('-', '').toLowerCase() : null,
+          key_type: this.pix_key ?? null,
+          key: this.new_pix.key ?? null,
           name: this.new_pix.name ?? null,
           city: this.new_pix.city ?? null,
           amount: (this.new_pix.amount ? `R$ ${this.new_pix.amount}` : null),

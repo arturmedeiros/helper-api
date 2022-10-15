@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="latitude && longitude" id="map-wrap" style="height: 590px;">
+    <div v-if="latitude && longitude" id="map-wrap" style="height: 585px;">
       <client-only>
         <l-map :zoom=10
                :center="[`${latitude}`,`${longitude}`]">
@@ -13,9 +13,9 @@
     </div>
     <div v-else
          class="justify-center align-center"
-         style="height: 350px; display: flex;">
+         style="height: 590px; display: flex;">
       <div >
-        Carregando...
+        Loading...
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@ export default {
     // Observa resposta do "getIpInformation"
     'ip.data.location': function () {
       if (this.ip.data.location) {
-        this.loadMap(this.ip.data.location);
+        this.loadMap(this.ip.data.location)
       }
     }
   },

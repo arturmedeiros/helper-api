@@ -1,4 +1,4 @@
-export const state = () => ({
+const defaultState = {
   data: [],
   baseUrl: 'https://helpers.arjos.com.br/',
   loading: false,
@@ -16,9 +16,9 @@ export const state = () => ({
       }
     ],
   }
-})
+}
 
-export const mutations = {
+const mutations = {
   SET_API_INFORMATION(state, payload) {
     state.data = payload;
     // console.log(state.data, payload);
@@ -33,13 +33,24 @@ export const mutations = {
   },
 }
 
-export const getters = {}
+const getters = {}
 
-export const actions = {
+const actions = {
   getApiInformation(context, payload){
     this.$axios.get("/").then(response => {
       context.commit('SET_API_INFORMATION', response.data)
       console.log('SET_API_INFORMATION', response.data)
     })
   }
+}
+
+const inBrowser = typeof window !== 'undefined';
+// if in browser, use pre-fetched state injected by SSR
+const state = (inBrowser && window.__INITIAL_STATE__) ? window.__INITIAL_STATE__.page : defaultState;
+
+export default {
+  state,
+  actions,
+  mutations,
+  getters
 }

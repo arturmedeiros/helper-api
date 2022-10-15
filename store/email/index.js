@@ -1,18 +1,21 @@
-export const state = () => ({
+const defaultState = {
   data: []
-})
+}
 
-export const mutations = {
+const mutations = {
   SET_EMAIL(state, payload) {
     state.data = payload;
     // console.log(state.data, payload);
   },
 }
 
-export const getters = {
+const getters = {
+  getEmailCodeFormatted: (state) => {
+    return `${JSON.stringify(state.data, null, 2)}`
+  },
 }
 
-export const actions = {
+const actions = {
   getEmailInformation(context, payload){
     this.$axios.post("/email/verify", payload).then(response => {
       context.commit('SET_EMAIL', response.data)
@@ -22,4 +25,15 @@ export const actions = {
       context.commit('SET_EMAIL', error.response.data)
     });
   }
+}
+
+const inBrowser = typeof window !== 'undefined';
+// if in browser, use pre-fetched state injected by SSR
+const state = (inBrowser && window.__INITIAL_STATE__) ? window.__INITIAL_STATE__.page : defaultState;
+
+export default {
+  state,
+  actions,
+  mutations,
+  getters
 }

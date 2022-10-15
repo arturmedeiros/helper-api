@@ -29,7 +29,7 @@ export default {
     this.info_api = await fetch(this.configs.baseUrl)
       .then(res => res.json())
       .then((response) => {
-        this.$store.commit('configs/SET_API_INFORMATION', response)
+        this.$store.commit('SET_API_INFORMATION', response)
       })
   },
   /* SSR Meta SEO */

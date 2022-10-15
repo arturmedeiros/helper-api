@@ -4,7 +4,7 @@ export default {
     titleTemplate: '%s - Documentation',
     title: 'Helper API',
     htmlAttrs: {
-      lang: 'pt-br'
+      lang: 'pt'
     },
     meta: [
       {

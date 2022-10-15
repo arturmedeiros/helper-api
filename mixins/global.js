@@ -8,7 +8,9 @@ export default {
       'ip',
     ]),
     ...mapGetters([
-      'ip/getCoordinates'
+      'getCoordinates',
+      'getIpCodeFormatted',
+      'getEmailCodeFormatted',
     ]),
     isMobile(){
       return (this.$vuetify.breakpoint.name === 'xs' || this.$vuetify.breakpoint.name === 'sm')
@@ -53,5 +55,14 @@ export default {
     refresh() {
       window.location.reload()
     },
+    getCodeType(data, type) {
+      if (data) {
+        if (type === "ip") {
+          return this.getIpCodeFormatted
+        } else if (this.type === "email") {
+          return this.getEmailCodeFormatted
+        }
+      }
+    }
   },
 }

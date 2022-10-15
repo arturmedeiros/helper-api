@@ -25,22 +25,23 @@
       <v-col v-if="$store.state.email.data.status === true" cols="12" sm="12" md="8" lg="8" shadow="none">
         <v-card outlined style="border-radius: 10px;" class="pa-4">
           <v-card-title class="flex-fill">
-            <div class="mr-3">
+            <div v-if="false" class="mr-3">
               <v-icon>mdi-information-outline</v-icon>
             </div>
-            Email information
+            Email information: {{ email_search}}
           </v-card-title>
-          <v-card-text class="">
+          <v-card-text class="pt-3">
             <v-alert
               dense
               text
+              type="success"
               color="success"
             >
               {{ $store.state.email.data.message }}
             </v-alert>
           </v-card-text>
-          <v-card-text>
-            <Code type="email"/>
+          <v-card-text class="pt-0">
+            <Code type="email" :data="$store.state.email.data"/>
           </v-card-text>
           <v-card-text>
             <div class="text-xs-right">
@@ -104,8 +105,8 @@ export default {
     searchEmail(){
       this.error = ""
       if (this.email_search && this.email_search.length > 2 && this.validateEmail(this.email_search)) {
-        this.$store.commit('email/SET_EMAIL', [])
-        this.$store.dispatch('email/getEmailInformation', {
+        this.$store.commit('SET_EMAIL', [])
+        this.$store.dispatch('getEmailInformation', {
           email: this.normalizeHelper(this.email_search)
         })
       } else {

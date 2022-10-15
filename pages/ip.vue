@@ -7,10 +7,10 @@
             <div class="mr-3">
               <v-icon>mdi-earth</v-icon>
             </div>
-            IP: {{ this.$store.state.ip.data.ip }}
+            IP: {{ $store.state.ip.data.ip }}
           </v-card-title>
           <v-card-text>
-            <Code type="ip"/>
+            <Code type="ip" :data="$store.state.ip.data"/>
           </v-card-text>
           <v-card-text>
             <div class="text-xs-right">
@@ -46,9 +46,7 @@ export default {
   },
 
   mounted() {
-    if  (!this.$store.state.ip.data.ip) {
-      this.$store.dispatch('ip/getIpInformation')
-    }
+    this.$store.dispatch('getIpInformation')
   },
 
   /* SSR Data Fetch */

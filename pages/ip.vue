@@ -10,7 +10,7 @@
             IP: {{ this.$store.state.ip.data.ip }}
           </v-card-title>
           <v-card-text>
-            <Code/>
+            <Code type="ip"/>
           </v-card-text>
           <v-card-text>
             <div class="text-xs-right">

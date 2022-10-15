@@ -4,7 +4,8 @@ export default {
   computed: {
     ...mapState([
       'configs',
-      'ip'
+      'email',
+      'ip',
     ]),
     ...mapGetters([
       'ip/getCoordinates'

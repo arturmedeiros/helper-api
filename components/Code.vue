@@ -1,5 +1,5 @@
 <template>
-  <v-card v-if="this.$store.state.ip.data.ip" dark>
+  <v-card v-if="($store.state.ip.data.language && $route.fullPath === '/ip') || ($store.state.email.data && $route.fullPath === '/email')" dark>
     <div v-highlightjs>
       <code style="padding: 20px 30px 0px 30px;
                    max-height: 450px;
@@ -10,7 +10,7 @@
                    flex-wrap: inherit;"
             class="javascript">
   <pre>
-  {{ ipRequest }}
+  {{ getCodeType() }}
   </pre>
       </code>
     </div>
@@ -27,13 +27,13 @@ export default {
     }
   },
   props: [
+    'type'
   ],
   components:{
   },
   computed: {
     ipRequest(){
       if  (this.$store.state.ip.data.language) {
-
         return `
 {
   "ip": ${this.$store.state.ip.data.ip},
@@ -94,9 +94,25 @@ export default {
 `
       }
       return []
-    }
+    },
+    emailValidator(){
+      if (this.$store.state.email.data.data) {
+        return `${JSON.stringify(this.$store.state.email.data.data, null, 2)}`
+      }
+      return []
+    },
   },
   methods: {
+    getCodeType(){
+      if (this.type === "ip") {
+        return this.ipRequest
+      } else if (this.type === "email") {
+        // console.log("Please enter", this.type)
+        return this.emailValidator
+      } else {
+        return this.ipRequest
+      }
+    }
   },
   watch: {
   }

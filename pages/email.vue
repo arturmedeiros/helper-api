@@ -14,7 +14,7 @@
               <v-text-field v-model="email_search"
                             label="Example: user@mail.com"
                             :append-icon="true ? 'mdi-magnify' : ''"
-                            @click.prevent:append="email_search ? searchEmail() : ''"
+                            @click.stop:append="email_search ? searchEmail() : ''"
               ></v-text-field>
             </v-form>
 

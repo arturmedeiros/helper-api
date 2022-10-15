@@ -28,6 +28,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
+      elevation="0"
       fixed
       app
     >
@@ -56,6 +57,7 @@
         <Nuxt />
       </v-container>
     </v-main>
+    <v-divider/>
     <v-footer
       :absolute="true"
       height="55px"
@@ -84,32 +86,17 @@
 <script>
 export default {
   name: 'DefaultLayout',
-  components: {
-  },
-  mounted() {
-    // console.log('Break', this.$vuetify.breakpoint.name)
-    // this.$store.dispatch('configs/getApiInformation')
-  },
+  components: {},
+  mounted() {},
   data() {
     return {
       drawer: false,
       loading: true,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
       title: 'Helper API'
     }
   },
-  methods: {
-  }
+  computed: {
+  },
+  methods: {}
 }
 </script>

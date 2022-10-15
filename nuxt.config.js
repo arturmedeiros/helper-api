@@ -74,6 +74,7 @@ export default {
 
   axios: {
     baseUrl: "https://helpers.arjos.com.br"
+    // baseUrl: 'http://localhost:3336/'
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

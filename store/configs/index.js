@@ -1,6 +1,7 @@
 const defaultState = {
   data: [],
   baseUrl: 'https://helpers.arjos.com.br/',
+  // baseUrl: 'http://localhost:3336/',
   loading: false,
   menu_sidebar: {
     items: [

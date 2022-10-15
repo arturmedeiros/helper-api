@@ -56,7 +56,6 @@
 
                     <!-- CPF -->
                     <v-text-field
-                      type="number"
                       v-model="new_pix.key"
                       v-if="pix_key === 'CPF'"
                       placeholder="###.###.###-##"
@@ -65,7 +64,6 @@
 
                     <!-- CNPJ -->
                     <v-text-field
-                      type="number"
                       v-model="new_pix.key"
                       v-if="pix_key === 'CNPJ'"
                       placeholder="###.###.###/####-###"

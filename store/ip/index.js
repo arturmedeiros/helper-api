@@ -17,7 +17,8 @@ const getters = {
     }
   },
   getIpCodeFormatted: (state) => {
-    return `{
+    if(state.data.ip){
+      return `{
   "ip": ${state.data.ip},
   "language": ${state.data.language},
   "timezone": ${state.data.timezone},
@@ -73,6 +74,7 @@ const getters = {
   },
   "api_version": ${state.data.api_version},
 }`
+    }
   },
 }
 

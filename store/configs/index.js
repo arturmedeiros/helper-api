@@ -24,7 +24,7 @@ const mutations = {
     // console.log(state.data, payload);
   },
   SET_LOADING(state, payload) {
-    state.data = payload;
+    state.loading = payload;
     // console.log(state.data, payload);
   },
   SET_MENU(state, payload) {

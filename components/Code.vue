@@ -33,6 +33,7 @@ export default {
   data(){
     return {
       loading: true,
+      loadingSign: false
     }
   },
   props: [
@@ -40,20 +41,36 @@ export default {
     'data'
   ],
   mounted() {
-    setTimeout(() => {
-      this.loading = false
-    }, 1300)
+    this.setLoading()
   },
   watch: {
     'data': function () {
-      /*console.log("Change data: ", this.data)*/
+      console.log("Change data: ", this.data)
       this.$store.commit('SET_EMAIL', [])
-    }
+      if(this.type === 'sign'){
+        this.loading = true
+        this.setLoading()
+      }
+    },
   },
   components:{},
   computed: {
   },
   methods: {
+    setLoading(){
+      setTimeout(() => {
+        if (this.type === 'sign') {
+          if(this.$store.state.horoscope.data.title) {
+            this.loading = false
+          } else {
+            this.setLoading()
+          }
+        }
+        else if (this.type !== 'sign') {
+          this.loading = false
+        }
+      }, 1300)
+    },
     clearCode(){
         let code = document.getElementById("code")
         if (code) {

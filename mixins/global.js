@@ -6,11 +6,15 @@ export default {
       'configs',
       'email',
       'ip',
+      'horoscope',
+      'pix'
     ]),
     ...mapGetters([
       'getCoordinates',
       'getIpCodeFormatted',
       'getEmailCodeFormatted',
+      'getSigns',
+      'getSignCodeFormatted'
     ]),
     isMobile(){
       return (this.$vuetify.breakpoint.name === 'xs' || this.$vuetify.breakpoint.name === 'sm')
@@ -61,6 +65,8 @@ export default {
           return this.getIpCodeFormatted
         } else if (this.type === "email") {
           return this.getEmailCodeFormatted
+        } else if (this.type === "sign") {
+          return this.getSignCodeFormatted
         }
       }
     }

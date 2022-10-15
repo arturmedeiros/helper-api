@@ -5,7 +5,7 @@
         <v-card outlined style="border-radius: 10px;" class="pa-4">
           <v-card-title class="flex-fill">
             <div class="mr-3">
-              <v-icon>mdi-email-check-outline</v-icon>
+              <v-icon>mdi-email</v-icon>
             </div>
             Enter email address
           </v-card-title>
@@ -76,14 +76,31 @@
 import Code from "@/components/Code";
 
 export default {
-  name: 'Email',
+  name: 'Pix',
   components: {
     Code
   },
-  /* SSR */
+  data() {
+    return {
+      info: []
+    }
+  },
+
+  mounted() {
+    this.$store.dispatch('getIpInformation')
+  },
+
+  /* SSR Data Fetch */
+  // async fetch() {
+  //   this.info = await fetch(this.configs.baseUrl)
+  //     .then(res => res.json())
+  //     .then((response) => {
+  //       this.$store.commit('ip/SET_IP_INFORMATION', response)
+  //     })
+  // },
   head() {
     return {
-      title: "Email Validator - Helper API",
+      title: "PIX Qr-Code Generator - Helper API",
       meta: [
         {
           hid: 'description',
@@ -91,31 +108,6 @@ export default {
           content: 'Helper API with several FREE options: Geolocation by IP, Email Validator, Email List Validator, PIX QR-Code Generator, Horoscope and much more.'
         }
       ]
-    }
-  },
-  data() {
-    return {
-      email_search: "",
-      error: ""
-    }
-  },
-  mounted() {
-  },
-  methods: {
-    searchEmail(){
-      this.error = ""
-      if (this.email_search && this.email_search.length > 2 && this.validateEmail(this.email_search)) {
-        this.$store.commit('SET_EMAIL', [])
-        this.$store.dispatch('getEmailInformation', {
-          email: this.normalizeHelper(this.email_search)
-        })
-      } else {
-        this.error = "Type a valid email address."
-      }
-    },
-    validateEmail(email) {
-      let re = /\S+@\S+\.\S+/;
-      return re.test(email);
     }
   }
 }

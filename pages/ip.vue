@@ -5,7 +5,7 @@
         <v-card outlined style="border-radius: 10px;" class="pa-4">
           <v-card-title class="flex-fill">
             <div class="mr-3">
-              <v-icon>mdi-earth</v-icon>
+              <v-icon>mdi-map-marker-radius-outline</v-icon>
             </div>
             IP: {{ $store.state.ip.data.ip }}
           </v-card-title>

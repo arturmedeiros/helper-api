@@ -2,8 +2,13 @@ import { mapState, mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapState(['configs']),
-    ...mapGetters([]),
+    ...mapState([
+      'configs',
+      'ip'
+    ]),
+    ...mapGetters([
+      'ip/getCoordinates'
+    ]),
     isMobile(){
       return (this.$vuetify.breakpoint.name === 'xs' || this.$vuetify.breakpoint.name === 'sm')
     },
@@ -14,25 +19,25 @@ export default {
       },
       apis: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-map-marker-radius-outline',
           avatar: '',
           title: 'IP Geolocation',
           to: '/ip'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-email-check-outline',
           avatar: '',
           title: 'Email Validator',
           to: '/email'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-qrcode-scan',
           avatar: '',
           title: 'PIX Generator',
           to: '/pix'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-star-shooting-outline',
           avatar: '',
           title: 'Horoscope',
           to: '/horoscope'

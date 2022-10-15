@@ -7,7 +7,7 @@
       Helper
     </span>
     <span style="font-size: 1.2em; font-weight: 400;">
-        API
+      API
     </span>
     <v-badge
       color="green"

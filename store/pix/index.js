@@ -1,47 +1,28 @@
 const defaultState = {
   data: [],
-  pix: {
-    key_type: null, //'telefone', 'cnpj', 'cpf'
-    key: null, // numero do telefone, cnpj ou cpj
-    name: null, // nome do destinatário (recebedor)
-    city: null, // cidade
-    amount: null, // valor
-    reference: null, // comentário ou código
-    qrcode_base64: null, // Recebo da request
-    code: null, // Recebo da request
-  },
+  // pix: {
+  //   key_type: null, //'telefone', 'cnpj', 'cpf'
+  //   key: null, // numero do telefone, cnpj ou cpj
+  //   name: null, // nome do destinatário (recebedor)
+  //   city: null, // cidade
+  //   amount: null, // valor
+  //   reference: null, // comentário ou código
+  //   qrcode_base64: null, // Recebo da request
+  //   code: null, // Recebo da request
+  // },
   pix_keys: [
-    {
-      value: 1,
-      id: 'Telefone',
-      label: 'Telefone',
-    },
-    {
-      value: 2,
-      id: 'Email',
-      label: 'E-mail',
-    },
-    {
-      value: 3,
-      id: 'CPF',
-      label: 'CPF',
-    },
-    {
-      value: 4,
-      id: 'CNPJ',
-      label: 'CNPJ',
-    },
-    {
-      value: 5,
-      id: 'Outro',
-      label: 'Outro',
-    },
+    "Telefone",
+    "E-mail",
+    "CPF",
+    "CNPJ",
+    "Outro"
   ],
+
 }
 
 const mutations = {
-  SET_PIX(state, payload){
-    state.pix = payload;
+  SET_PIX(state, payload) {
+    state.data = payload;
   },
 }
 
@@ -55,15 +36,16 @@ const getters = {
 }
 
 const actions = {
-  getPixQRCode(context, payload){
+  getPixQRCode(context, payload) {
     this.$axios.post("/pix/generate", payload).then(response => {
-      if (!response.data.reference){
+      if (!response.data.reference) {
         response.data.reference = null
       }
-      if (!response.data.amount){
+      if (!response.data.amount) {
         response.data.amount = null
       }
       context.commit('SET_PIX', response.data)
+      console.log('SET_PIX', response.data)
     }).catch(error => {
       // console.log(error.response.status);
       console.log(error.response);

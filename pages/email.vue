@@ -104,6 +104,7 @@ export default {
     searchEmail(){
       this.error = ""
       if (this.email_search && this.email_search.length > 2 && this.validateEmail(this.email_search)) {
+        this.$store.commit('email/SET_EMAIL', [])
         this.$store.dispatch('email/getEmailInformation', {
           email: this.normalizeHelper(this.email_search)
         })

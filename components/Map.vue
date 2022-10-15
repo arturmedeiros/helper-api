@@ -41,6 +41,12 @@ export default {
   mounted() {
     this.$store.dispatch('ip/getIpInformation')
   },
+  onBeforeUnmount() {
+    let map = document.getElementById("map-wrap")
+    if (map) {
+      map.remove();
+    }
+  },
   methods: {
     loadMap(coordinates) {
       this.latitude = coordinates.latitude

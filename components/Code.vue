@@ -1,6 +1,8 @@
 <template>
-  <v-card v-if="($store.state.ip.data.language && $route.fullPath === '/ip') || ($store.state.email.data && $route.fullPath === '/email')" dark>
-    <div v-highlightjs>
+  <v-card v-if="($store.state.ip.data.language && $route.fullPath === '/ip') ||
+                ($store.state.email.data && $route.fullPath === '/email')"
+          dark>
+    <div id="code" v-highlightjs>
       <code style="padding: 20px 30px 0px 30px;
                    max-height: 450px;
                    max-width: 100%;
@@ -22,15 +24,18 @@
 export default {
   name: "Code",
   data(){
-    return {
-      links: []
-    }
+    return {}
   },
   props: [
     'type'
   ],
-  components:{
+  onBeforeUnmount() {
+    let code = document.getElementById("code")
+    if (code) {
+      code.remove();
+    }
   },
+  components:{},
   computed: {
     ipRequest(){
       if  (this.$store.state.ip.data.language) {
@@ -78,7 +83,7 @@ export default {
         "comercial_name": ${this.$store.state.ip.data.os.comercial_name},
   },
   "device": {
-        "type": ${this.$store.state.ip.data.device.device},
+        "type": ${this.$store.state.ip.data.device.type},
         "connection": {
           "downlink": ${this.$store.state.ip.data.device.connection.downlink},
           "effectiveType": ${this.$store.state.ip.data.device.connection.effectiveType},

@@ -86,15 +86,15 @@ export default {
   mounted() {
     this.$store.dispatch('getHoroscopeApi')
 
-    console.log("horoscope", this.horoscope.api)
+    /*console.log("horoscope", this.horoscope.api)*/
   },
   watch: {
     'horoscope.api': function () {
-      console.log("Change horoscope API", this.horoscope.api)
+      /*console.log("Change horoscope API", this.horoscope.api)*/
       this.loading = false
     },
     'horoscope.data': function () {
-      console.log("Change horoscope DATA", this.horoscope.data)
+      /*console.log("Change horoscope DATA", this.horoscope.data)*/
       if (this.horoscope.data.text) {
         this.loading = false
       }

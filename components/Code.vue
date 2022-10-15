@@ -45,7 +45,7 @@ export default {
   },
   watch: {
     'data': function () {
-      console.log("Change data: ", this.data)
+      /*console.log("Change data: ", this.data)*/
       this.$store.commit('SET_EMAIL', [])
       if(this.type === 'sign'){
         this.loading = true

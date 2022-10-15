@@ -51,7 +51,7 @@ export default {
     loadMap(coordinates) {
       this.latitude = coordinates.latitude
       this.longitude = coordinates.longitude
-      console.log(coordinates.latitude, coordinates.longitude);
+      /*console.log(coordinates.latitude, coordinates.longitude);*/
     }
   },
 };

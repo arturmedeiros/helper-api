@@ -1,12 +1,6 @@
 <template>
   <v-card elevation="0" dark>
-    <div v-if="loading"
-         class="justify-center align-center"
-         style="height: 450px; display: flex;">
-      <div >
-        Loading...
-      </div>
-    </div>
+    <Loading v-if="loading" :height="type === 'sign' ? '150px' : '450px'"/>
     <div v-else>
       <div id="code" v-highlightjs>
         <code style="padding: 20px 30px 10px 30px;
@@ -33,7 +27,6 @@ export default {
   data(){
     return {
       loading: true,
-      loadingSign: false
     }
   },
   props: [
@@ -54,8 +47,7 @@ export default {
     },
   },
   components:{},
-  computed: {
-  },
+  computed: {},
   methods: {
     setLoading(){
       setTimeout(() => {
@@ -77,7 +69,6 @@ export default {
           code.remove();
         }
     },
-    createCode(){}
   },
 }
 </script>

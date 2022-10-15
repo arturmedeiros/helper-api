@@ -10,11 +10,14 @@
             Enter email address
           </v-card-title>
           <v-card-text>
-            <v-text-field v-model="email_search"
-                          label="Example: user@mail.com"
-                          :append-icon="true ? 'mdi-magnify' : ''"
-                          @click:append="email_search ? searchEmail() : ''"
-            ></v-text-field>
+            <v-form @submit.prevent="email_search ? searchEmail() : ''">
+              <v-text-field v-model="email_search"
+                            label="Example: user@mail.com"
+                            :append-icon="true ? 'mdi-magnify' : ''"
+                            @click.prevent:append="email_search ? searchEmail() : ''"
+              ></v-text-field>
+            </v-form>
+
           </v-card-text>
           <v-card-text v-if="error">
             {{ error }}

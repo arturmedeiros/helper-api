@@ -44,19 +44,9 @@ export default {
       info: []
     }
   },
-
   mounted() {
     this.$store.dispatch('getIpInformation')
   },
-
-  /* SSR Data Fetch */
-  // async fetch() {
-  //   this.info = await fetch(this.configs.baseUrl)
-  //     .then(res => res.json())
-  //     .then((response) => {
-  //       this.$store.commit('ip/SET_IP_INFORMATION', response)
-  //     })
-  // },
   head() {
     return {
       title: "IP Geolocation - Helper API",

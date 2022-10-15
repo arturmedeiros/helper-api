@@ -10,13 +10,7 @@
             Choose a sign
           </v-card-title>
           <v-card-text>
-            <div v-if="loading"
-                 class="justify-center align-center"
-                 style="height: 50px; display: flex;">
-              <div >
-                Loading...
-              </div>
-            </div>
+            <Loading v-if="loading" height="50px"/>
             <div v-else class="pt-3">
               <v-sheet
                 class="mx-auto"
@@ -45,7 +39,6 @@
               </v-sheet>
             </div>
           </v-card-text>
-<!--          {{ sign }}-->
           <v-card-text v-if="sign && $store.state.horoscope.data">
             <Code type="sign" :data="sign"/>
           </v-card-text>
@@ -55,13 +48,10 @@
   </v-container>
 </template>
 <script>
-// import Code from "@/components/Code";
 
 export default {
   name: 'Horoscope',
-  components: {
-    // Code
-  },
+  components: {},
   /* SSR */
   head() {
     return {
@@ -79,8 +69,7 @@ export default {
     return {
       sign: "",
       error: "",
-      loading: true,
-      model: null,
+      loading: true
     }
   },
   mounted() {

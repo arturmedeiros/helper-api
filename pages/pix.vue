@@ -10,62 +10,14 @@
             Enter email address
           </v-card-title>
           <v-card-text>
-            <v-text-field v-model="email_search"
-                          label="Example: user@mail.com"
-                          :append-icon="true ? 'mdi-magnify' : ''"
-                          @click:append="email_search ? searchEmail() : ''"
-            ></v-text-field>
+<!--            <v-text-field v-model="email_search"-->
+<!--                          label="Example: user@mail.com"-->
+<!--                          :append-icon="true ? 'mdi-magnify' : ''"-->
+<!--                          @click:append="email_search ? searchEmail() : ''"-->
+<!--            ></v-text-field>-->
           </v-card-text>
           <v-card-text v-if="error">
             {{ error }}
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <!--  Email Valid  -->
-      <v-col v-if="$store.state.email.data.status === true" cols="12" sm="12" md="8" lg="8" shadow="none">
-        <v-card outlined style="border-radius: 10px;" class="pa-4">
-          <v-card-title class="flex-fill">
-            <div v-if="false" class="mr-3">
-              <v-icon>mdi-information-outline</v-icon>
-            </div>
-            Email information: {{ email_search}}
-          </v-card-title>
-          <v-card-text class="pt-3">
-            <v-alert
-              dense
-              text
-              type="success"
-              color="success"
-            >
-              {{ $store.state.email.data.message }}
-            </v-alert>
-          </v-card-text>
-          <v-card-text class="pt-0">
-            <Code type="email" :data="$store.state.email.data"/>
-          </v-card-text>
-          <v-card-text>
-            <div class="text-xs-right">
-              <em><small>&mdash; Free API</small></em>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <!--  Email Invalid  -->
-      <v-col v-if="$store.state.email.data.status === false" cols="12" sm="12" md="8" lg="8" shadow="none">
-        <v-card outlined style="border-radius: 10px;" class="pa-4 d-block text-center">
-          <v-card-text class="">
-            <v-alert
-              dense
-              text
-              color="error"
-            >
-              <div class="pt-4 text-center ">
-                <v-icon color="error">mdi-alert</v-icon>
-              </div>
-              <div class="pt-3 pb-4 font-weight-bold">
-                {{ $store.state.email.data.message }}
-              </div>
-            </v-alert>
           </v-card-text>
         </v-card>
       </v-col>
@@ -82,25 +34,16 @@ export default {
   },
   data() {
     return {
-      info: []
+      error: ""
     }
   },
 
   mounted() {
-    this.$store.dispatch('getIpInformation')
   },
 
-  /* SSR Data Fetch */
-  // async fetch() {
-  //   this.info = await fetch(this.configs.baseUrl)
-  //     .then(res => res.json())
-  //     .then((response) => {
-  //       this.$store.commit('ip/SET_IP_INFORMATION', response)
-  //     })
-  // },
   head() {
     return {
-      title: "PIX Qr-Code Generator - Helper API",
+      title: "PIX QR-Code Generator - Helper API",
       meta: [
         {
           hid: 'description',

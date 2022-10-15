@@ -1,23 +1,17 @@
 <template>
   <div>
     <div v-if="latitude && longitude" id="map-wrap" style="height: 585px;">
-      <client-only>
+      <client-only style="position: sticky !important; z-index: 1!important;">
         <l-map :zoom=10
                :center="[`${latitude}`,`${longitude}`]">
           <l-tile-layer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></l-tile-layer>
           <l-marker
+            :z-index-offset="1"
             :lat-lng="[`${latitude}`,`${longitude}`]"></l-marker>
         </l-map>
       </client-only>
-
     </div>
-    <div v-else
-         class="justify-center align-center"
-         style="height: 590px; display: flex;">
-      <div >
-        Loading...
-      </div>
-    </div>
+    <Loading v-else height="590px"/>
   </div>
 </template>
 
@@ -31,7 +25,6 @@ export default {
     };
   },
   watch: {
-    // Observa resposta do "getIpInformation"
     'ip.data.location': function () {
       if (this.ip.data.location) {
         this.loadMap(this.ip.data.location)
@@ -39,7 +32,6 @@ export default {
     }
   },
   mounted() {
-    // this.$store.dispatch('ip/getIpInformation')
   },
   onBeforeUnmount() {
     let map = document.getElementById("map-wrap")
@@ -51,7 +43,6 @@ export default {
     loadMap(coordinates) {
       this.latitude = coordinates.latitude
       this.longitude = coordinates.longitude
-      /*console.log(coordinates.latitude, coordinates.longitude);*/
     }
   },
 };
@@ -61,5 +52,11 @@ export default {
 #mapContainer {
   width: 100vw;
   height: 100vh;
+}
+</style>
+
+<style>
+.vue2leaflet-map {
+  z-index: 1!important;
 }
 </style>

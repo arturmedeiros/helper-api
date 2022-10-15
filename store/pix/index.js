@@ -1,30 +1,75 @@
 const defaultState = {
-  data: []
+  data: [],
+  pix: {
+    key_type: null, //'telefone', 'cnpj', 'cpf'
+    key: null, // numero do telefone, cnpj ou cpj
+    name: null, // nome do destinatário (recebedor)
+    city: null, // cidade
+    amount: null, // valor
+    reference: null, // comentário ou código
+    qrcode_base64: null, // Recebo da request
+    code: null, // Recebo da request
+  },
+  pix_keys: [
+    {
+      value: 1,
+      id: 'Telefone',
+      label: 'Telefone',
+    },
+    {
+      value: 2,
+      id: 'Email',
+      label: 'E-mail',
+    },
+    {
+      value: 3,
+      id: 'CPF',
+      label: 'CPF',
+    },
+    {
+      value: 4,
+      id: 'CNPJ',
+      label: 'CNPJ',
+    },
+    {
+      value: 5,
+      id: 'Outro',
+      label: 'Outro',
+    },
+  ],
 }
 
 const mutations = {
-  // SET_EMAIL(state, payload) {
-  //   state.data = payload;
-  //   // console.log(state.data, payload);
-  // },
+  SET_PIX(state, payload){
+    state.pix = payload;
+  },
 }
 
 const getters = {
-  // getEmailCodeFormatted: (state) => {
-  //   return `${JSON.stringify(state.data, null, 2)}`
-  // },
+  getPixKey: (state) => (key, value) => {
+    const object = state.pix_keys.find(item => {
+      return item[`${key}`] === value;
+    });
+    return object === undefined ? {} : object;
+  },
 }
 
 const actions = {
-  // getEmailInformation(context, payload){
-  //   this.$axios.post("/email/verify", payload).then(response => {
-  //     context.commit('SET_EMAIL', response.data)
-  //   }).catch(error => {
-  //     // console.log(error.response.status);
-  //     console.log(error.response);
-  //     context.commit('SET_EMAIL', error.response.data)
-  //   });
-  // }
+  getPixQRCode(context, payload){
+    this.$axios.post("/pix/generate", payload).then(response => {
+      if (!response.data.reference){
+        response.data.reference = null
+      }
+      if (!response.data.amount){
+        response.data.amount = null
+      }
+      context.commit('SET_PIX', response.data)
+    }).catch(error => {
+      // console.log(error.response.status);
+      console.log(error.response);
+      context.commit('SET_PIX', error.response.data)
+    });
+  }
 }
 
 const inBrowser = typeof window !== 'undefined';

@@ -5,7 +5,7 @@
       <v-img
         class=""
         alt=""
-        :src="image ? image : 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light'"
+        :src="getImg(image)"
       ></v-img>
     </v-list-item-avatar>
 
@@ -13,13 +13,14 @@
       <v-list-item-title
         :style="title_size ? `font-size: ${title_size}` : ''"
       >
-        {{ title ? title : "Artur" }}
+        {{ title ? title : "" }}
       </v-list-item-title>
       <v-list-item-subtitle
         class=""
+        style="color: seagreen"
         :style="subtitle_size ? `font-size: ${subtitle_size}` : ''"
       >
-        {{ subtitle ? subtitle : "Developer" }}
+        {{ subtitle ? subtitle : "" }}
       </v-list-item-subtitle>
     </v-list-item-content>
     <!--  //  -->
@@ -52,7 +53,22 @@ export default {
     'title_size',
     'subtitle_size',
     'circle'
-  ]
+  ],
+  methods: {
+    getImg(api) {
+      if (api === 'email_validator') {
+        return this.logo.img_email_validator
+      } else if (api === 'geolocation') {
+        return this.logo.img_geolocation
+      } else if (api === 'pix') {
+        return this.logo.img_pix
+      } else if (api === 'horoscope') {
+        return this.logo.img_horoscope
+      } else {
+        'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light'
+      }
+    }
+  }
 }
 </script>
 

@@ -1,9 +1,9 @@
 import { mapState, mapGetters } from "vuex";
 
-import email_validator from "@/assets/images/email-validator/favicon.png"
-import geolocation from "@/assets/images/geolocation/favicon.png"
-import horoscope from "@/assets/images/horoscope/favicon.png"
-import pix from "@/assets/images/pix/favicon.png"
+import img_email_validator from "@/assets/images/email-validator/favicon.png"
+import img_geolocation from "@/assets/images/geolocation/favicon.png"
+import img_horoscope from "@/assets/images/horoscope/favicon.png"
+import img_pix from "@/assets/images/pix/favicon.png"
 
 export default {
   computed: {
@@ -28,10 +28,10 @@ export default {
   data(){
     return {
       logo: {
-        email_validator: email_validator,
-        geolocation: geolocation,
-        horoscope: horoscope,
-        pix: pix,
+        img_email_validator: img_email_validator,
+        img_geolocation: img_geolocation,
+        img_horoscope: img_horoscope,
+        img_pix: img_pix,
       },
       apis: [
         {
@@ -53,14 +53,14 @@ export default {
           icon: 'mdi-qrcode-scan',
           avatar: 'pix',
           title: 'PIX Generator',
-          text: '',
+          text: 'QR Code generator for PIX payments. You make a POST request with some parameters and you get a base64 encoded image.',
           to: '/pix'
         },
         {
           icon: 'mdi-star-shooting-outline',
           avatar: 'horoscope',
           title: 'Horoscope',
-          text: '',
+          text: 'Access 12 horoscopes every day, written by professional astrologers. Important: Only Portuguese (PT) language is currently available.',
           to: '/horoscope'
         },
       ]

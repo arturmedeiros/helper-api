@@ -73,9 +73,9 @@
         <small>
           Made with ❤ by
           <a style="text-decoration: none;"
-             href="https://arjos.com.br/"
+             href="https://github.com/arturmedeiros"
              target="_blank">
-          ARJOS
+          @arturmedeiros
         </a>
         </small>
       </div>

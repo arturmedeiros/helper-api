@@ -14,7 +14,7 @@
             <p>The Helper API has the purpose of offering a functional, simple and accessible service.</p>
             <p></p>
             <div class="text-xs-right">
-              <em><small>&mdash; Team <strong>ARJOS</strong> </small></em>
+              <em><small><strong>@arturmedeiros</strong> </small></em>
             </div>
           </v-card-text>
         </v-card>
@@ -30,9 +30,12 @@
              md="6"
              shadow="none"
              class="cursor-pointer"
+             @click.prevent="$router.push(`${item.to}`)"
       >
         <CardHomeDefault :title="item.title"
-                         subtitle="Gratuita"
+                         :image="item.avatar"
+                         subtitle="Free"
+                         title_size="20px"
                          :text="item.text"/>
       </v-col>
     </v-row>
@@ -64,6 +67,21 @@ export default {
           content: 'Helper API with several FREE options: Geolocation by IP, Email Validator, Email List Validator, PIX QR-Code Generator, Horoscope and much more.'
         }
       ]
+    }
+  },
+  methods: {
+    getImg(api) {
+      if (api === 'email_validator') {
+        return this.logo.img_email_validator
+      } else if (api === 'geolocation') {
+        return this.logo.img_geolocation
+      } else if (api === 'pix') {
+        return this.logo.img_pix
+      } else if (api === 'horoscope') {
+        return this.logo.img_horoscope
+      } else {
+        'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light'
+      }
     }
   }
 }

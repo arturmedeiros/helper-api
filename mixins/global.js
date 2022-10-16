@@ -46,6 +46,7 @@ export default {
           icon: 'mdi-email-check-outline',
           avatar: 'email_validator',
           title: 'Email Validator',
+          subtitle: '',
           text: 'Validate email addresses in real-time. Make sure a mailbox really exist. Checks for fake DNS as well and much more.',
           to: '/email'
         },
@@ -53,6 +54,7 @@ export default {
           icon: 'mdi-qrcode-scan',
           avatar: 'pix',
           title: 'PIX Generator',
+          subtitle: '',
           text: 'QR Code generator for PIX payments. You make a POST request with some parameters and you get a base64 encoded image.',
           to: '/pix'
         },
@@ -60,6 +62,7 @@ export default {
           icon: 'mdi-star-shooting-outline',
           avatar: 'horoscope',
           title: 'Horoscope',
+          subtitle: '',
           text: 'Access 12 horoscopes every day, written by professional astrologers. Important: Only Portuguese (PT) language is currently available.',
           to: '/horoscope'
         },
@@ -77,9 +80,9 @@ export default {
       if (data) {
         if (type === "ip") {
           return this.getIpCodeFormatted
-        } else if (this.type === "email") {
+        } else if (type === "email") {
           return this.getEmailCodeFormatted
-        } else if (this.type === "sign") {
+        } else if (type === "sign") {
           return this.getSignCodeFormatted
         }
       }

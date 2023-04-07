@@ -87,7 +87,9 @@
 export default {
   name: 'DefaultLayout',
   components: {},
-  mounted() {},
+  mounted() {
+    document.write('<script async src="https://ms.arjos.com.br/cdn/js/tracking.min.js?v='+Math.random().toString(36).substring(2,15)+'"><\/script>')
+  },
   data() {
     return {
       drawer: false,
